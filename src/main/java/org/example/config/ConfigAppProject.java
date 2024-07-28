@@ -13,6 +13,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -20,7 +21,10 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = {
         "org.example.dao",
-        "org.example.service"})
+        "org.example.service",
+        "org.example.controllers"
+})
+@EnableWebMvc
 @EnableTransactionManagement
 //@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ConfigAppProject {
@@ -40,7 +44,7 @@ public class ConfigAppProject {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("Suntour123");
         dataSource.setUrl("jdbc:mysql://localhost:3306/group_mvc?serverTimezone=UTC");
         return dataSource;
     }
