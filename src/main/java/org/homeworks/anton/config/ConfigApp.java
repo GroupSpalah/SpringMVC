@@ -1,10 +1,8 @@
-package org.example.config;
-
+package org.homeworks.anton.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -20,14 +18,11 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "org.example.dao",
-        "org.example.service",
-        "org.example.controllers"
+        "org.homeworks.anton.controllers"
 })
 @EnableWebMvc
 @EnableTransactionManagement
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
-public class ConfigAppProject {
+public class ConfigApp {
 
     @Bean
     public TransactionManager transactionManager(EntityManagerFactory factory) {
@@ -44,8 +39,8 @@ public class ConfigAppProject {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
-        dataSource.setPassword("Suntour123");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/group_mvc?serverTimezone=UTC");
+        dataSource.setPassword("123456");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mvc?serverTimezone=UTC");
         return dataSource;
     }
 
@@ -54,7 +49,7 @@ public class ConfigAppProject {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
         adapter.setGenerateDdl(true);
         return adapter;
     }
@@ -65,7 +60,7 @@ public class ConfigAppProject {
 
         emfb.setDataSource(dataSource());
         emfb.setJpaVendorAdapter(jpaVendorAdapter());
-        emfb.setPackagesToScan("org.example.domain");
+        emfb.setPackagesToScan("org.homeworks.anton.domain");
 
         return emfb;
     }
