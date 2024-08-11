@@ -1,17 +1,18 @@
 package org.example.config;
 
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -22,20 +23,22 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = {
         "org.example.dao",
         "org.example.service",
-        "org.example.controllers"
+        "org.example.controllers",
+        "org.example.handlers"
+
 })
 @EnableWebMvc
 @EnableTransactionManagement
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableJpaRepositories(basePackages = "org.example.repository")
 public class ConfigAppProject {
 
     @Bean
-    public TransactionManager transactionManager(EntityManagerFactory factory) {
+    public JpaTransactionManager transactionManager(EntityManagerFactory factory) {
         JpaTransactionManager manager = new JpaTransactionManager();
 
         manager.setEntityManagerFactory(factory);
         manager.setDataSource(dataSource());
-
         return manager;
     }
 
@@ -54,7 +57,7 @@ public class ConfigAppProject {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
         adapter.setGenerateDdl(true);
         return adapter;
     }

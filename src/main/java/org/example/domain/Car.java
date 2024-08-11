@@ -2,10 +2,12 @@ package org.example.domain;
 
 
 
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+
 
 @Entity
 @AllArgsConstructor
@@ -26,3 +28,7 @@ public class Car {
     int age;
 
 }
+
+/**
+ * public Car findByName(String name);
+ */

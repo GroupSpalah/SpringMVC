@@ -1,12 +1,19 @@
 package org.example.controllers;
 
+import lombok.AllArgsConstructor;
 import org.example.domain.Car;
-import org.springframework.stereotype.Controller;
+import org.example.service.CrudService;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.io.IOException;
+
+//@Controller
+@RestController
 @RequestMapping(value = "car")
+@AllArgsConstructor
 public class CarController {
+
+    CrudService service;
 
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public void show() {
@@ -17,10 +24,20 @@ public class CarController {
     public void show1() {
         System.out.println("Hello");//localhost:9999/mvc/car/show
     }
-    
+
+    @GetMapping(value = "/exception")
+    public void show3() throws IOException {
+        throw new IOException("I'm IOException");
+    }
+
+    @PostMapping(value = "/show2")
+    public void show2(@RequestBody Car car) {
+        service.save(car);
+    }
+
     @PostMapping(value = "/save")
     public void save(@RequestBody Car car) {
-        System.out.println(car);
+        service.save(car);
     }
 
     @PutMapping(value = "/update")
@@ -28,21 +45,17 @@ public class CarController {
         System.out.println(car);
     }
 
-    @DeleteMapping(value = "/delete{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public void delete(@PathVariable("id") int id) {
         System.out.println(id);
     }
 
     @GetMapping(value = "/find/{id}")
-    @ResponseBody
+//    @ResponseBody
     public Car findById(@PathVariable("id") int id) {
-        Car mercedes = Car
-                .builder()
-                .id(id)
-                .age(12)
-                .name("Mercedes")
-                .build();
+        Car car = service.findById(id);
 
-        return mercedes;
+        return car;
     }
+
 }

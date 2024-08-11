@@ -1,5 +1,7 @@
+/*
 package org.homeworks.anton.config;
 
+import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,14 +15,13 @@ import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = {
         "org.homeworks.anton.controllers"
 })
-@EnableWebMvc
+//@EnableWebMvc
 @EnableTransactionManagement
 public class ConfigApp {
 
@@ -66,3 +67,4 @@ public class ConfigApp {
     }
 }
 
+*/

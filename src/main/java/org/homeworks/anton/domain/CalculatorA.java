@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class CalculatorA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "calc_id")
     int id;
-   String valueOne;
+    String valueOne;
     String valueTwo;
     String sign;
 }

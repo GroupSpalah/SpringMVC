@@ -1,3 +1,4 @@
+/*
 package org.homeworks.anton.config;
 
 
@@ -20,3 +21,4 @@ public class WebInitializer
             return new String[]{"/mvc/*"};
         }
 }
+*/

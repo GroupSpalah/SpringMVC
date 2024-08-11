@@ -15,4 +15,9 @@ public class CarServiceImpl implements CrudService {
     public void save(Car car) {
         dao.save(car);
     }
+
+    @Override
+    public Car findById(int id) {
+        return dao.findById(id);
+    }
 }
