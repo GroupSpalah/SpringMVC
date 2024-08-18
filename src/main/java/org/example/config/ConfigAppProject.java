@@ -27,7 +27,7 @@ import javax.sql.DataSource;
         "org.example.handlers"
 
 })
-@EnableWebMvc
+//@EnableWebMvc
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = "org.example.repository")
