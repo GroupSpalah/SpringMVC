@@ -1,44 +1,37 @@
-package org.example.config;
+/*
+package org.homeworks.anton.config;
 
-
-
+import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "org.example.dao",
-        "org.example.service",
-        "org.example.controllers",
-        "org.example.handlers"
-
+        "org.homeworks.anton.controllers"
 })
 //@EnableWebMvc
 @EnableTransactionManagement
-@EnableAspectJAutoProxy(proxyTargetClass = true)
-@EnableJpaRepositories(basePackages = "org.example.repository")
-public class ConfigAppProject {
+public class ConfigApp {
 
     @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory factory) {
+    public TransactionManager transactionManager(EntityManagerFactory factory) {
         JpaTransactionManager manager = new JpaTransactionManager();
 
         manager.setEntityManagerFactory(factory);
         manager.setDataSource(dataSource());
+
         return manager;
     }
 
@@ -47,8 +40,8 @@ public class ConfigAppProject {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
-        dataSource.setPassword("Suntour123");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/group_mvc?serverTimezone=UTC");
+        dataSource.setPassword("123456");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mvc?serverTimezone=UTC");
         return dataSource;
     }
 
@@ -68,9 +61,10 @@ public class ConfigAppProject {
 
         emfb.setDataSource(dataSource());
         emfb.setJpaVendorAdapter(jpaVendorAdapter());
-        emfb.setPackagesToScan("org.example.domain");
+        emfb.setPackagesToScan("org.homeworks.anton.domain");
 
         return emfb;
     }
 }
 
+*/
