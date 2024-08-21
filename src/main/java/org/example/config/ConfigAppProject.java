@@ -22,6 +22,7 @@ import javax.sql.DataSource;
         "org.example.dao",
         "org.example.service"})
 @EnableTransactionManagement
+
 //@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ConfigAppProject {
 
